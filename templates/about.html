@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About </title>
+</head>
+<body>
+<a href="{% url 'index' %}">Go back to index </a>
+<a href="{% url 'addUser' %}"> Go to add user</a>
+<ul>
+{% for row in user %}
+    <li>{{ row.id }} | {{ row.name }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic form to add user</title>
+</head>
+<body>
+
+<a href="{% url 'index' %}">Go to index </a>
+<a href="{% url 'about' %}"> Go to about </a>
+<a href="{% url 'addUser' %}"> Go to add user</a>
+
+
+<form method="post" action="{% url 'addUserD' %}">
+    {%   csrf_token %}
+    <select name="id">
+        {% for row in user %}
+            <option value="{{ row.id }}" {% if id == row.id  %}selected {% endif %}>{{ row.id }} | {{ row.name }}</option>
+        {% endfor %}
+    </select>
+
+    {{ form }}
+
+    <input type="radio" name="option" value="Search" checked/>
+    <label>Search</label>
+    <input type="radio" name="option" value="Add" />
+    <label>Add</label>
+    <input type="radio" name="option" value="Edit"/>
+    <label>Edit</label>
+    <input type="radio" name="option" value="Delete"/>
+    <label>Delete</label>
+    <input type="submit">
+</form>
+
+
+</body>
+</html>
